@@ -13,8 +13,8 @@
 
 .label {
   display: inline-flex;
-  background: rgba(124, 110, 243, 0.1);
-  border: 1px solid rgba(124, 110, 243, 0.3);
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.25);
   color: var(--primary);
   font-size: 0.8rem;
   font-weight: 600;
@@ -51,7 +51,7 @@
 }
 .card:hover { border-color: var(--border-hover); transform: translateY(-2px); box-shadow: var(--shadow); }
 
-.icon { font-size: 2rem; }
+.icon { color: var(--primary); display: flex; }
 .cardTitle { font-size: 1.05rem; font-weight: 700; }
 .cardDesc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 

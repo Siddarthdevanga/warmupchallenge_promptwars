@@ -7,14 +7,15 @@ export default function CTA() {
       <div className={styles.container}>
         <div className={styles.glow}></div>
         <div className={styles.content}>
-          <h2 className={styles.title}>Start Your Next Adventure</h2>
+          <div className={styles.badge}>Free to start · No credit card needed</div>
+          <h2 className={styles.title}>Plan Your Next Yatra with AI</h2>
           <p className={styles.desc}>
-            Join 50,000+ travelers who plan smarter trips with AI. Free to get started.
+            Join 2 lakh+ Indian travelers planning smarter trips — from weekend escapes to epic road trips.
           </p>
           <Link href="/plan" className={styles.primaryBtn}>
-            🚀 Plan My Trip — It&apos;s Free
+            Start Planning — It&apos;s Free
           </Link>
-          <p className={styles.note}>No credit card required · Takes 2 minutes</p>
+          <p className={styles.note}>Takes 2 minutes · Itinerary ready instantly</p>
         </div>
       </div>
     </section>

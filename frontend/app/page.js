@@ -2,7 +2,9 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import HowItWorks from './components/HowItWorks';
+import WeekendTrips from './components/WeekendTrips';
 import Destinations from './components/Destinations';
+import UnexploredGems from './components/UnexploredGems';
 import Testimonials from './components/Testimonials';
 import CTA from './components/CTA';
 import AIAssistant from './components/AIAssistant';
@@ -15,7 +17,9 @@ export default function Home() {
       <Hero />
       <Features />
       <HowItWorks />
+      <WeekendTrips />
       <Destinations />
+      <UnexploredGems />
       <Testimonials />
       <CTA />
       <AIAssistant />

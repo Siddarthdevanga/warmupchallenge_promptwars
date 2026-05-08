@@ -19,7 +19,7 @@
   left: -100px;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(124, 110, 243, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.10) 0%, transparent 70%);
   border-radius: 50%;
 }
 
@@ -29,7 +29,7 @@
   right: -100px;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
   border-radius: 50%;
 }
 
@@ -52,9 +52,9 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(124, 110, 243, 0.1);
-  border: 1px solid rgba(124, 110, 243, 0.3);
+  gap: 8px;
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.25);
   color: var(--primary);
   font-size: 0.85rem;
   font-weight: 500;
@@ -68,10 +68,11 @@
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
+  color: var(--text);
 }
 
 .gradient {
-  background: linear-gradient(135deg, #7c6ef3, #00d4ff);
+  background: linear-gradient(135deg, #0284c7, #f97316);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -94,7 +95,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #7c6ef3, #6c5ee3);
+  background: linear-gradient(135deg, #0284c7, #0369a1);
   color: white;
   font-size: 1rem;
   font-weight: 600;
@@ -109,7 +110,7 @@
   display: inline-flex;
   align-items: center;
   background: transparent;
-  border: 1px solid var(--border-hover);
+  border: 1.5px solid var(--border-hover);
   color: var(--text);
   font-size: 1rem;
   font-weight: 500;
@@ -127,7 +128,7 @@
 }
 
 .stat { display: flex; flex-direction: column; gap: 2px; }
-.statNum { font-size: 1.4rem; font-weight: 700; }
+.statNum { font-size: 1.4rem; font-weight: 700; color: var(--text); }
 .statLabel { font-size: 0.8rem; color: var(--text-muted); }
 .divider { width: 1px; height: 32px; background: var(--border); }
 
@@ -135,11 +136,11 @@
 .preview { position: relative; }
 
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--bg);
+  border: 1.5px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 24px;
-  box-shadow: var(--shadow), var(--shadow-glow);
+  box-shadow: var(--shadow);
 }
 
 .cardHeader {
@@ -166,13 +167,13 @@
 
 .cardBadge {
   margin-left: auto;
-  background: rgba(0, 230, 118, 0.15);
+  background: rgba(5, 150, 105, 0.12);
   color: var(--success);
   font-size: 0.75rem;
   font-weight: 600;
   padding: 3px 10px;
   border-radius: 100px;
-  border: 1px solid rgba(0, 230, 118, 0.3);
+  border: 1px solid rgba(5, 150, 105, 0.25);
 }
 
 .itinerary { display: flex; flex-direction: column; gap: 12px; }
@@ -190,12 +191,19 @@
   align-items: center;
   gap: 12px;
   padding: 10px 14px;
-  background: var(--surface2);
+  background: var(--surface);
   border-radius: var(--radius-sm);
   font-size: 0.85rem;
 }
-.activity > span { font-size: 1.2rem; }
-.actName { font-weight: 500; }
+
+.actIcon {
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.actName { font-weight: 500; color: var(--text); }
 .actTime { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
 
 .budgetRow {
@@ -203,21 +211,31 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 14px;
-  background: rgba(124, 110, 243, 0.08);
-  border: 1px solid rgba(124, 110, 243, 0.2);
+  background: rgba(2, 132, 199, 0.06);
+  border: 1px solid rgba(2, 132, 199, 0.18);
   border-radius: var(--radius-sm);
   font-size: 0.85rem;
-  color: var(--text-muted);
   margin-top: 4px;
 }
+
+.budgetLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+}
+
 .budgetAmt { color: var(--primary); font-weight: 600; }
 
 .floatingTag1 {
   position: absolute;
   top: -16px;
   right: -16px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
   color: var(--text);
   font-size: 0.8rem;
   font-weight: 500;
@@ -231,8 +249,11 @@
   position: absolute;
   bottom: -16px;
   left: -16px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
   color: var(--text);
   font-size: 0.8rem;
   font-weight: 500;

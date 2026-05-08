@@ -5,8 +5,8 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata = {
-  title: "TravelAI — Plan Smarter Trips With AI",
-  description: "Personalized itineraries, smart budgeting, real-time updates, and adaptive travel experiences.",
+  title: "YatrAI — India's AI-Powered Smart Travel Companion",
+  description: "AI-powered travel planning for Indian travelers. Weekend trips, train routes, pilgrimages, hidden gems, and budget optimization — built for Bharat.",
 };
 
 export default function RootLayout({ children }) {

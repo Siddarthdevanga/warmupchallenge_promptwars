@@ -10,21 +10,19 @@ export default function Navbar() {
     <nav className={styles.nav}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
-          <span className={styles.logoIcon}>✈</span>
-          TravelAI
+          <span className={styles.logoIcon}>🇮🇳</span>
+          YatrAI
         </Link>
 
         <div className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
           <a href="#features">Features</a>
-          <a href="#how-it-works">How It Works</a>
+          <a href="#weekend-trips">Weekend Trips</a>
           <a href="#destinations">Destinations</a>
           <a href="#testimonials">Testimonials</a>
         </div>
 
         <div className={styles.actions}>
-          <button className={styles.loginBtn}>Login</button>
-          <button className={styles.signupBtn}>Sign Up</button>
-          <Link href="/plan" className={styles.planBtn}>Plan My Trip</Link>
+          <Link href="/plan" className={styles.planBtn}>Plan My Yatra</Link>
         </div>
 
         <button
