@@ -22,6 +22,8 @@ export default function Navbar() {
           <a href="#destinations">Destinations</a>
           <a href="/nearby">Near You</a>
           <a href="/discover">Discover</a>
+          <a href="/compare">Compare</a>
+          <a href="/mood">By Mood</a>
         </div>
 
         <div className={styles.actions}>

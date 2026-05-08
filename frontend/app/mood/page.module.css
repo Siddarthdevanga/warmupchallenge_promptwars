@@ -1,0 +1,60 @@
+.page { min-height: 100vh; background: var(--bg); font-family: var(--font); }
+
+.header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; border-bottom: 1px solid var(--surface2); background: #fff; position: sticky; top: 0; z-index: 10; }
+.logo { display: flex; align-items: center; gap: 8px; font-size: 1.2rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+.planBtn { padding: 0.5rem 1.1rem; background: var(--primary); color: #fff; border-radius: 8px; text-decoration: none; font-size: 0.875rem; font-weight: 600; }
+
+.hero { text-align: center; padding: 3rem 1.5rem 2rem; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-bottom: 1px solid var(--surface2); }
+.badge { display: inline-block; padding: 0.3rem 0.9rem; background: var(--primary); color: #fff; border-radius: 999px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1rem; }
+.title { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: var(--text); margin: 0 0 0.5rem; }
+.desc { font-size: 1rem; color: var(--text-muted); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+.body { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+.moodGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+@media (max-width: 640px) { .moodGrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 380px) { .moodGrid { grid-template-columns: 1fr; } }
+
+.moodCard {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: 1.5rem 1rem; background: #fff; border: 1.5px solid var(--surface2);
+  border-radius: 16px; cursor: pointer; transition: all 0.2s;
+}
+.moodCard:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.moodActive { border-width: 2px !important; box-shadow: 0 6px 20px rgba(0,0,0,0.1) !important; }
+
+.moodIcon { margin-bottom: 0.75rem; }
+.moodLabel { font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 0.3rem; }
+.moodTagline { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; }
+
+.error { padding: 0.7rem 1rem; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; color: #dc2626; font-size: 0.85rem; margin-bottom: 1rem; }
+
+.loadingState { text-align: center; margin: 1rem 0 2rem; }
+.loadingBar { height: 4px; border-radius: 999px; background: linear-gradient(90deg, var(--primary) 0%, #38bdf8 50%, var(--primary) 100%); background-size: 200%; animation: shimmer 1.4s infinite linear; margin-bottom: 0.75rem; }
+.loadingState p { color: var(--text-muted); font-size: 0.9rem; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+.results { }
+.resultsTitle { font-size: 1.3rem; font-weight: 800; color: var(--text); margin: 0 0 1.25rem; }
+
+.destGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+@media (max-width: 600px) { .destGrid { grid-template-columns: 1fr; } }
+
+.destCard { background: #fff; border: 1px solid var(--surface2); border-radius: 16px; padding: 1.5rem; transition: all 0.2s; }
+.destCard:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+
+.destHeader { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem; }
+.destName { font-size: 1.1rem; font-weight: 800; color: var(--text); }
+.destState { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.1rem; }
+.destDuration { padding: 0.25rem 0.65rem; background: var(--surface); border: 1px solid var(--surface2); border-radius: 8px; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+
+.destTagline { font-size: 0.85rem; color: var(--primary); font-style: italic; margin: 0 0 0.75rem; line-height: 1.4; }
+.destMeta { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+.destBudget, .destTime { padding: 0.25rem 0.65rem; background: var(--surface); border-radius: 6px; font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+.destHighlight { font-size: 0.82rem; color: var(--text-muted); margin: 0 0 1rem; line-height: 1.5; }
+
+.destActions { display: flex; align-items: center; gap: 0.75rem; }
+.planBtn2 { flex: 1; padding: 0.55rem; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+.planBtn2:hover { background: var(--primary-dark); }
+.compareLink { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); text-decoration: none; }
+.compareLink:hover { color: var(--primary); }

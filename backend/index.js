@@ -13,6 +13,7 @@ app.use('/api/assistant', require('./routes/assistant'));
 app.use('/api/weekend-trips', require('./routes/weekendTrips'));
 app.use('/api/places', require('./routes/places'));
 app.use('/api/vision', require('./routes/vision'));
+app.use('/api/explore', require('./routes/explore'));
 
 app.get('/', (_req, res) => {
   res.json({ message: 'YatrAI backend running', version: '2.0.0' });
