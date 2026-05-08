@@ -1,0 +1,24 @@
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Features from './components/Features';
+import HowItWorks from './components/HowItWorks';
+import Destinations from './components/Destinations';
+import Testimonials from './components/Testimonials';
+import CTA from './components/CTA';
+import AIAssistant from './components/AIAssistant';
+import styles from './page.module.css';
+
+export default function Home() {
+  return (
+    <main className={styles.main}>
+      <Navbar />
+      <Hero />
+      <Features />
+      <HowItWorks />
+      <Destinations />
+      <Testimonials />
+      <CTA />
+      <AIAssistant />
+    </main>
+  );
+}

@@ -1,0 +1,125 @@
+.page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow1 {
+  position: absolute;
+  top: -200px;
+  left: -200px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(124, 110, 243, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.glow2 {
+  position: absolute;
+  bottom: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  max-width: 500px;
+  padding: 24px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Orb */
+.orb { position: relative; width: 110px; height: 110px; display: flex; align-items: center; justify-content: center; }
+
+.orbCore {
+  width: 80px;
+  height: 80px;
+  background: var(--surface);
+  border: 2px solid rgba(124, 110, 243, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  position: relative;
+  z-index: 2;
+  animation: orbPulse 2s ease-in-out infinite;
+}
+
+.ring1 {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(124, 110, 243, 0.3);
+  animation: spin 4s linear infinite;
+}
+
+.ring2 {
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 212, 255, 0.2);
+  animation: spin 8s linear infinite reverse;
+}
+
+@keyframes orbPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(124, 110, 243, 0.3); }
+  50% { box-shadow: 0 0 48px rgba(124, 110, 243, 0.7); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.02em; }
+.subtitle { font-size: 0.95rem; color: var(--text-muted); margin-top: -24px; }
+
+.steps { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  transition: all 0.4s;
+  text-align: left;
+}
+
+.step.active {
+  border-color: var(--primary);
+  background: rgba(124, 110, 243, 0.08);
+  color: var(--text);
+}
+
+.step.done {
+  border-color: rgba(0, 230, 118, 0.3);
+  background: rgba(0, 230, 118, 0.05);
+  color: var(--text-muted);
+}
+
+.stepIcon { font-size: 1.15rem; width: 26px; text-align: center; }
+.step.done .stepIcon { color: var(--success); }
+
+.progressWrap { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+
+.track { height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+.fill { height: 100%; background: linear-gradient(90deg, #7c6ef3, #00d4ff); border-radius: 3px; transition: width 1.2s ease; }
+.pct { font-size: 0.85rem; color: var(--text-muted); text-align: right; }
