@@ -5,6 +5,7 @@ import HowItWorks from './components/HowItWorks';
 import WeekendTrips from './components/WeekendTrips';
 import Destinations from './components/Destinations';
 import UnexploredGems from './components/UnexploredGems';
+import NearYou from './components/NearYou';
 import Testimonials from './components/Testimonials';
 import CTA from './components/CTA';
 import AIAssistant from './components/AIAssistant';
@@ -19,6 +20,7 @@ export default function Home() {
       <HowItWorks />
       <WeekendTrips />
       <Destinations />
+      <NearYou />
       <UnexploredGems />
       <Testimonials />
       <CTA />

@@ -18,7 +18,7 @@ export default function Navbar() {
           <a href="#features">Features</a>
           <a href="#weekend-trips">Weekend Trips</a>
           <a href="#destinations">Destinations</a>
-          <a href="#testimonials">Testimonials</a>
+          <a href="/nearby">Near You</a>
         </div>
 
         <div className={styles.actions}>
