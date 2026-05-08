@@ -11,8 +11,6 @@ const STEPS = [
   { text: 'Building your personalised itinerary...' },
 ];
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
-
 export default function ProcessingPage() {
   const router = useRouter();
   const [current, setCurrent] = useState(0);
@@ -29,7 +27,7 @@ export default function ProcessingPage() {
       ? JSON.parse(sessionStorage.getItem('tripData') || '{}')
       : {};
 
-    fetch(`${API_URL}/api/itinerary/generate`, {
+    fetch('/api/itinerary/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(tripData),
