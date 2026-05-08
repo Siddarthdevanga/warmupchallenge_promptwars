@@ -14,7 +14,7 @@
   left: -200px;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(124, 110, 243, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.10) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -24,7 +24,7 @@
   right: -200px;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.07) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -47,12 +47,12 @@
   width: 80px;
   height: 80px;
   background: var(--surface);
-  border: 2px solid rgba(124, 110, 243, 0.5);
+  border: 2px solid rgba(2, 132, 199, 0.4);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  color: var(--primary);
   position: relative;
   z-index: 2;
   animation: orbPulse 2s ease-in-out infinite;
@@ -62,7 +62,7 @@
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  border: 1.5px solid rgba(124, 110, 243, 0.3);
+  border: 1.5px solid rgba(2, 132, 199, 0.25);
   animation: spin 4s linear infinite;
 }
 
@@ -70,13 +70,13 @@
   position: absolute;
   inset: -18px;
   border-radius: 50%;
-  border: 1px dashed rgba(0, 212, 255, 0.2);
+  border: 1px dashed rgba(249, 115, 22, 0.20);
   animation: spin 8s linear infinite reverse;
 }
 
 @keyframes orbPulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(124, 110, 243, 0.3); }
-  50% { box-shadow: 0 0 48px rgba(124, 110, 243, 0.7); }
+  0%, 100% { box-shadow: 0 0 20px rgba(2, 132, 199, 0.2); }
+  50% { box-shadow: 0 0 48px rgba(2, 132, 199, 0.5); }
 }
 
 @keyframes spin {
@@ -84,8 +84,9 @@
   to { transform: rotate(360deg); }
 }
 
-.title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.02em; }
+.title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
 .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-top: -24px; }
+.errorNote { font-size: 0.82rem; color: var(--warning); background: rgba(217, 119, 6, 0.08); border: 1px solid rgba(217, 119, 6, 0.2); padding: 8px 16px; border-radius: var(--radius-sm); }
 
 .steps { width: 100%; display: flex; flex-direction: column; gap: 10px; }
 
@@ -105,21 +106,34 @@
 
 .step.active {
   border-color: var(--primary);
-  background: rgba(124, 110, 243, 0.08);
+  background: rgba(2, 132, 199, 0.06);
   color: var(--text);
 }
 
 .step.done {
-  border-color: rgba(0, 230, 118, 0.3);
-  background: rgba(0, 230, 118, 0.05);
+  border-color: rgba(5, 150, 105, 0.3);
+  background: rgba(5, 150, 105, 0.04);
   color: var(--text-muted);
 }
 
-.stepIcon { font-size: 1.15rem; width: 26px; text-align: center; }
+.stepIcon { width: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .step.done .stepIcon { color: var(--success); }
+.step.active .stepIcon { color: var(--primary); }
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+}
+.step.active .dot { background: var(--primary); animation: pulse 1.2s ease-in-out infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
 
 .progressWrap { display: flex; flex-direction: column; gap: 8px; width: 100%; }
-
 .track { height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
-.fill { height: 100%; background: linear-gradient(90deg, #7c6ef3, #00d4ff); border-radius: 3px; transition: width 1.2s ease; }
+.fill { height: 100%; background: linear-gradient(90deg, #0284c7, #0ea5e9); border-radius: 3px; transition: width 1.2s ease; }
 .pct { font-size: 0.85rem; color: var(--text-muted); text-align: right; }

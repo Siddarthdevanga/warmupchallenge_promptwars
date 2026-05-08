@@ -1,4 +1,5 @@
 .page { display: flex; min-height: 100vh; background: var(--bg); }
+.loading { display: flex; align-items: center; justify-content: center; min-height: 100vh; color: var(--text-muted); font-size: 1rem; }
 
 /* Sidebar */
 .sidebar {
@@ -17,9 +18,9 @@
 }
 
 .logo {
-  font-size: 1.15rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #7c6ef3, #00d4ff);
+  font-size: 1.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #0284c7, #f97316);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -32,7 +33,7 @@
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
 }
-.tripDest { font-size: 0.875rem; font-weight: 600; }
+.tripDest { font-size: 0.875rem; font-weight: 600; color: var(--text); }
 .tripDates { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
 
 .nav { display: flex; flex-direction: column; gap: 2px; flex: 1; }
@@ -51,12 +52,12 @@
   width: 100%;
 }
 .navItem:hover { background: var(--surface2); color: var(--text); }
-.navActive { background: rgba(124, 110, 243, 0.12) !important; color: var(--primary) !important; }
+.navActive { background: rgba(2, 132, 199, 0.10) !important; color: var(--primary) !important; }
 
 .newTrip {
   display: block;
   text-align: center;
-  background: linear-gradient(135deg, #7c6ef3, #6c5ee3);
+  background: linear-gradient(135deg, #0284c7, #0369a1);
   color: white;
   font-size: 0.875rem;
   font-weight: 600;
@@ -69,19 +70,35 @@
 /* Main */
 .main { flex: 1; overflow-y: auto; padding: 28px; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
 
-.topbar { display: flex; align-items: center; justify-content: space-between; }
-.pageTitle { font-size: 1.5rem; font-weight: 700; }
+.topbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.pageTitle { font-size: 1.5rem; font-weight: 700; color: var(--text); }
+
+.badges { display: flex; gap: 8px; flex-wrap: wrap; }
+
 .weatherBadge {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   background: var(--surface);
   border: 1px solid var(--border);
-  padding: 8px 16px;
+  padding: 7px 14px;
   border-radius: 100px;
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
 }
+
+.crowdBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+.crowdLow { background: rgba(5, 150, 105, 0.08); color: #059669; border-color: rgba(5, 150, 105, 0.25); }
+.crowdMedium { background: rgba(217, 119, 6, 0.08); color: #d97706; border-color: rgba(217, 119, 6, 0.25); }
+.crowdHigh { background: rgba(220, 38, 38, 0.08); color: #dc2626; border-color: rgba(220, 38, 38, 0.25); }
 
 /* Summary Cards */
 .summaryGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
@@ -96,9 +113,8 @@
   transition: border-color 0.2s;
 }
 .summaryCard:hover { border-color: var(--border-hover); }
-.summaryIcon { font-size: 1.4rem; }
-.summaryLabel { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
-.summaryValue { font-size: 0.9rem; font-weight: 600; }
+.summaryLabel { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.summaryValue { font-size: 0.92rem; font-weight: 700; color: var(--text); }
 
 /* Content Grid */
 .contentGrid { display: grid; grid-template-columns: 1fr 340px; gap: 20px; align-items: start; }
@@ -116,9 +132,9 @@
 }
 
 .sectionTop { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-.sectionTitle { font-size: 1rem; font-weight: 700; }
+.sectionTitle { font-size: 0.95rem; font-weight: 700; color: var(--text); }
 
-.dayTabs { display: flex; gap: 6px; }
+.dayTabs { display: flex; gap: 6px; flex-wrap: wrap; }
 .dayTab {
   background: none;
   border: 1px solid var(--border);
@@ -134,11 +150,11 @@
 .dayTabActive { background: var(--primary); border-color: var(--primary); color: white; }
 
 .dayTheme {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--primary);
   padding: 6px 12px;
-  background: rgba(124, 110, 243, 0.08);
+  background: rgba(2, 132, 199, 0.07);
   border-radius: var(--radius-sm);
   width: fit-content;
 }
@@ -148,7 +164,7 @@
 .timeline::before {
   content: '';
   position: absolute;
-  left: 62px;
+  left: 58px;
   top: 16px;
   bottom: 16px;
   width: 1px;
@@ -156,7 +172,7 @@
 }
 
 .timelineItem { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; }
-.timelineTime { font-size: 0.75rem; color: var(--text-muted); width: 46px; min-width: 46px; padding-top: 2px; font-weight: 500; }
+.timelineTime { font-size: 0.75rem; color: var(--text-muted); width: 42px; min-width: 42px; padding-top: 2px; font-weight: 500; }
 .dot {
   width: 10px;
   height: 10px;
@@ -170,13 +186,14 @@
   z-index: 1;
 }
 .timelineBody { flex: 1; display: flex; flex-direction: column; gap: 4px; }
-.actName { font-size: 0.875rem; font-weight: 600; }
-.actMeta { display: flex; align-items: center; gap: 12px; font-size: 0.75rem; color: var(--text-muted); }
+.actName { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+.actMeta { display: flex; align-items: center; gap: 10px; font-size: 0.75rem; color: var(--text-muted); flex-wrap: wrap; }
+.actCost { color: var(--primary); font-weight: 600; }
 .actNote { color: var(--text-dim); }
 
 /* Budget */
 .budgetTotal { display: flex; align-items: baseline; gap: 8px; }
-.totalAmt { font-size: 2rem; font-weight: 800; }
+.totalAmt { font-size: 2rem; font-weight: 800; color: var(--text); }
 .totalLabel { font-size: 0.85rem; color: var(--text-muted); }
 
 .budgetBar { height: 8px; border-radius: 4px; overflow: hidden; display: flex; }
@@ -186,14 +203,28 @@
 .budgetRow { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; }
 .budgetDot { width: 8px; height: 8px; border-radius: 50%; min-width: 8px; }
 .budgetLabel { flex: 1; color: var(--text-muted); }
-.budgetAmt { font-weight: 600; }
+.budgetAmt { font-weight: 600; color: var(--text); }
+
+.tips { display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--border); padding-top: 12px; }
+.tip { font-size: 0.8rem; color: var(--text-muted); padding-left: 10px; border-left: 2px solid var(--primary); }
+
+/* Transport */
+.transportList { display: flex; flex-direction: column; gap: 10px; }
+.transportCard {
+  padding: 12px 14px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.transportRec { border-color: rgba(2, 132, 199, 0.4); background: rgba(2, 132, 199, 0.05); }
+.transportMode { font-size: 0.875rem; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 8px; }
+.recBadge { font-size: 0.7rem; background: var(--primary); color: #fff; padding: 2px 8px; border-radius: 100px; font-weight: 600; }
+.transportRoute { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+.transportMeta { font-size: 0.78rem; color: var(--primary); font-weight: 500; margin-top: 4px; }
 
 /* Nearby */
 .nearbyList { display: flex; flex-direction: column; gap: 10px; }
 .nearbyCard {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   padding: 12px;
   background: var(--surface2);
   border-radius: var(--radius-sm);
@@ -201,18 +232,30 @@
   transition: border-color 0.2s;
 }
 .nearbyCard:hover { border-color: var(--border-hover); }
-.nearbyIcon {
-  font-size: 1.4rem;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface);
-  border-radius: var(--radius-sm);
-}
-.nearbyName { font-size: 0.875rem; font-weight: 600; }
+.nearbyName { font-size: 0.875rem; font-weight: 600; color: var(--text); }
 .nearbyMeta { display: flex; gap: 10px; font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+.nearbyWhy { font-size: 0.78rem; color: var(--text-dim); margin-top: 4px; }
+
+/* Food & Gems */
+.tagList { display: flex; flex-wrap: wrap; gap: 8px; }
+.foodTag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: rgba(249, 115, 22, 0.08);
+  color: var(--accent);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+.gemTag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: rgba(2, 132, 199, 0.08);
+  color: var(--primary);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  padding: 5px 12px;
+  border-radius: 100px;
+}
 
 @media (max-width: 1100px) {
   .contentGrid { grid-template-columns: 1fr; }

@@ -13,7 +13,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #7c6ef3, #6c5ee3);
+  background: linear-gradient(135deg, #0284c7, #0369a1);
   border: none;
   color: white;
   font-size: 1.4rem;
@@ -56,7 +56,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(124, 110, 243, 0.15);
+  background: rgba(2, 132, 199, 0.12);
   border-radius: 50%;
 }
 

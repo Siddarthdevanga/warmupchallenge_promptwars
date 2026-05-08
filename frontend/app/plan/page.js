@@ -6,7 +6,7 @@ import styles from './page.module.css';
 
 const STEPS = [
   { id: 1, title: 'Basic Details', desc: 'Where do you want to go?' },
-  { id: 2, title: 'Budget', desc: "What's your budget range?" },
+  { id: 2, title: 'Budget', desc: 'What is your budget range?' },
   { id: 3, title: 'Travel Style', desc: 'How do you like to travel?' },
   { id: 4, title: 'Interests', desc: 'What are you into?' },
   { id: 5, title: 'Constraints', desc: 'Any special requirements?' },
@@ -15,16 +15,23 @@ const STEPS = [
   { id: 8, title: 'AI Personalization', desc: 'Help AI understand you better' },
 ];
 
-const TRAVEL_STYLES = ['Adventure', 'Romantic', 'Luxury', 'Family', 'Backpacking', 'Cultural', 'Food-Focused'];
-const INTERESTS = ['Beaches', 'Nightlife', 'Hiking', 'Museums', 'Shopping', 'Cafes', 'Anime', 'Photography', 'Nature'];
-const CONSTRAINTS = ['Vegetarian', 'Avoid Crowds', 'Slow-Paced', 'Public Transport Only', 'Wheelchair Accessible'];
-const ACCOMMODATIONS = ['Hotels', 'Hostels', 'Resorts', 'Villas', 'Airbnb'];
-const TRANSPORTS = ['Flights', 'Trains', 'Buses', 'Rental Cars'];
+const TRAVEL_STYLES = ['Adventure', 'Pilgrimage', 'Family', 'Road Trip', 'Backpacking', 'Cultural', 'Food-Focused', 'Nature & Trekking'];
+const INTERESTS = ['Beaches', 'Trekking', 'Temples & Shrines', 'Forts & History', 'Wildlife Safari', 'Local Food', 'Photography', 'Nature', 'Tribal Culture', 'Waterfalls'];
+const CONSTRAINTS = ['Vegetarian / Jain Food', 'Avoid Crowds', 'Slow-Paced', 'Train / Bus Only', 'Wheelchair Accessible', 'Family-Friendly', 'Pet-Friendly'];
+const ACCOMMODATIONS = ['Hotels', 'Homestays', 'Resorts', 'Dharamshalas', 'Hostels / Dormitory'];
+const TRANSPORTS = ['Train (IRCTC)', 'Bus (KSRTC / RedBus)', 'Flight', 'Self-Drive / Road Trip', 'Taxi / Cab'];
+
+const BUDGET_OPTIONS = [
+  { id: 'budget', label: 'Budget', range: 'Under ₹5,000/day', desc: 'Dormitory, local dhabas, public transport' },
+  { id: 'mid-range', label: 'Mid-Range', range: '₹5,000 – ₹15,000/day', desc: '3-star hotels, restaurants, mix of transport' },
+  { id: 'luxury', label: 'Luxury', range: 'Above ₹15,000/day', desc: 'Resorts, fine dining, private cars' },
+];
 
 export default function PlanPage() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [data, setData] = useState({
+    fromCity: '',
     destination: '',
     startDate: '',
     endDate: '',
@@ -41,8 +48,14 @@ export default function PlanPage() {
   });
 
   function next() {
-    if (step < STEPS.length) setStep((s) => s + 1);
-    else router.push('/processing');
+    if (step < STEPS.length) {
+      setStep((s) => s + 1);
+    } else {
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('tripData', JSON.stringify(data));
+      }
+      router.push('/processing');
+    }
   }
 
   function back() {
@@ -65,7 +78,10 @@ export default function PlanPage() {
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <Link href="/" className={styles.logo}>✈ TravelAI</Link>
+        <Link href="/" className={styles.logo}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          YatrAI
+        </Link>
         <div className={styles.stepInfo}>Step {step} of {STEPS.length}</div>
       </div>
 
@@ -83,9 +99,15 @@ export default function PlanPage() {
         <div className={styles.body}>
           {step === 1 && (
             <div className={styles.fields}>
-              <div className={styles.field}>
-                <label>Destination</label>
-                <input className={styles.input} placeholder="e.g. Tokyo, Japan" value={data.destination} onChange={(e) => pick('destination', e.target.value)} />
+              <div className={styles.row}>
+                <div className={styles.field}>
+                  <label>Travelling from</label>
+                  <input className={styles.input} placeholder="e.g. Bangalore" value={data.fromCity} onChange={(e) => pick('fromCity', e.target.value)} />
+                </div>
+                <div className={styles.field}>
+                  <label>Destination</label>
+                  <input className={styles.input} placeholder="e.g. Coorg, Karnataka" value={data.destination} onChange={(e) => pick('destination', e.target.value)} />
+                </div>
               </div>
               <div className={styles.row}>
                 <div className={styles.field}>
@@ -99,22 +121,18 @@ export default function PlanPage() {
               </div>
               <div className={styles.field}>
                 <label>Travelers: <strong>{data.travelers}</strong></label>
-                <input type="range" min="1" max="10" className={styles.range} value={data.travelers} onChange={(e) => pick('travelers', Number(e.target.value))} />
-                <div className={styles.rangeLabels}><span>1</span><span>10</span></div>
+                <input type="range" min="1" max="20" className={styles.range} value={data.travelers} onChange={(e) => pick('travelers', Number(e.target.value))} />
+                <div className={styles.rangeLabels}><span>1</span><span>20</span></div>
               </div>
             </div>
           )}
 
           {step === 2 && (
             <div className={styles.budgetGrid}>
-              {[
-                { id: 'budget', label: 'Budget', icon: '💵', desc: 'Hostels, street food, public transport' },
-                { id: 'mid-range', label: 'Mid-Range', icon: '💳', desc: '3-star hotels, restaurants, mix of transport' },
-                { id: 'luxury', label: 'Luxury', icon: '💎', desc: '5-star hotels, fine dining, private cars' },
-              ].map((b) => (
+              {BUDGET_OPTIONS.map((b) => (
                 <button key={b.id} className={`${styles.budgetCard} ${data.budget === b.id ? styles.selected : ''}`} onClick={() => pick('budget', b.id)}>
-                  <div className={styles.budgetIcon}>{b.icon}</div>
                   <div className={styles.budgetLabel}>{b.label}</div>
+                  <div className={styles.budgetRange}>{b.range}</div>
                   <div className={styles.budgetDesc}>{b.desc}</div>
                 </button>
               ))}
@@ -164,8 +182,8 @@ export default function PlanPage() {
           {step === 8 && (
             <div className={styles.sliders}>
               {[
-                { label: ['Packed Days', 'Relaxed Days'], key: 'packedVsRelaxed', low: 'Action-filled days', mid: 'Balanced mix', high: 'Slow & relaxed days' },
-                { label: ['Save Time', 'Save Money'], key: 'saveTimeVsMoney', low: 'Time is more valuable', mid: 'Balance time & money', high: 'Save money where possible' },
+                { label: ['Packed Days', 'Relaxed Days'], key: 'packedVsRelaxed', low: 'Action-filled days', mid: 'Balanced mix', high: 'Slow and relaxed days' },
+                { label: ['Save Time', 'Save Money'], key: 'saveTimeVsMoney', low: 'Time is more valuable', mid: 'Balance time and money', high: 'Save money where possible' },
                 { label: ['Food is fuel', 'Food is everything'], key: 'foodImportance', low: 'Food is just fuel', mid: 'Enjoy good food', high: 'Food is a top priority' },
               ].map((sl) => (
                 <div key={sl.key} className={styles.sliderField}>
@@ -181,9 +199,9 @@ export default function PlanPage() {
         </div>
 
         <div className={styles.nav}>
-          {step > 1 && <button className={styles.backBtn} onClick={back}>← Back</button>}
+          {step > 1 && <button className={styles.backBtn} onClick={back}>Back</button>}
           <button className={styles.nextBtn} onClick={next}>
-            {step === STEPS.length ? '🤖 Generate My AI Trip' : 'Next →'}
+            {step === STEPS.length ? 'Generate My Itinerary' : 'Next'}
           </button>
         </div>
       </div>
